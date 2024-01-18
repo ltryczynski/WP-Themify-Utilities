@@ -1,0 +1,1 @@
+// Shortcut tab for blog post
