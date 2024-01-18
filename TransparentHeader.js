@@ -64,15 +64,5 @@ new TransparentHeader({
     stickyHeaderElement: document.querySelector('.sticky-nav')
 })
 
-// const nav = {
-//     static: document.querySelector('.static-nav'),
-//     sticky: document.querySelector('.sticky-nav'),
-// }
-
-// const navChangeHandler = (e) => {
-
-// }
-
-
 
 
