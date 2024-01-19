@@ -2,67 +2,84 @@ class TransparentHeader {
     constructor({ stickyHeaderElement, StaticHeaderElement, scrollYChangePos = 300 }) {
         this.nav = {
             sticky: stickyHeaderElement,
-            static: StaticHeaderElement
+            static: StaticHeaderElement,
         }
         this.scrollYChangePos = scrollYChangePos;
-        this.activeHeader = null;
-        this.checkPosOnload();
+        this.setUpHeaders();
+        this.checkActiveHeader();
+        this.windowScrollHander();
     }
 
-    showHeader(navKey) {
+    setUpHeaders() {
+        const { nav } = this;
+        this.setHeadersStyle(nav.sticky, 'fixed');
+        this.setHeadersStyle(nav.static, 'absolute');
+    }
+
+    toggleHeader(navKey) {
         const { nav } = this;
         for (let k in nav) {
-            // console.log(`---- nav key: ${k}`);
+            console.log(`---- nav key: ${k}`);
             if (navKey === k) {
-                nav[k].style.display = 'flex';
-                nav[k].style.opacity = '1';
-                nav[k].style.transform = 'translateY(0)';
-                nav[k].style.width = '100%';
+                this.showHeader(nav[k]);
                 this.activeHeader = k;
             }
             else {
-                nav[k].style.display = 'none';
-                nav[k].style.opacity = '0';
-                nav[k].style.transform = 'translateY(-100%)';
+                this.hideHeader(nav[k]);
             }
 
         }
     }
 
-    navChangeHandler(e) {
-        const { nav, scrollYChangePos } = this;
-        if (window.scrollY > scrollYChangePos) {
-            this.showHeader('sticky');
-        } else {
-            this.showHeader('static');
+    checkActiveHeader() {
+        const { checkWindowPosition, scrollYChangePos } = this;
+        if (checkWindowPosition() > scrollYChangePos) {
+            console.log('sticky nav');
+            this.toggleHeader('sticky');
+        }
+        else {
+            console.log('static nav ');
+            this.toggleHeader('static');
         }
     }
 
-    scrollHandler() {
-        window.addEventListener('scroll', (e) => this.navChangeHandler(e));
+    windowScrollHander() {
+        window.addEventListener('scroll', () => this.checkActiveHeader());
     }
 
-    checkPosOnload() {
-        const { scrollYChangePos } = this;
-        // Hide elements before DOMContentLoaded
-        // ..
-
-
-
-        document.addEventListener('DOMContentLoaded', (e) => {
-            if (window.scrollY < scrollYChangePos) this.activeHeader = 'static'
-            else {
-                // logic when scroll is deeper then scrollYChangePos
-                // ..
-            }
-        })
+    // Utilities
+    checkWindowPosition() {
+        return window.scrollY;
     }
+
+    setHeadersStyle(element, positionType) {
+        element.style.position = positionType;
+        element.style.top = '0';
+        element.style.left = '0';
+        element.style.right = '0';
+        element.style.width = '100%';
+        element.style.transition = '.3s ease-out';
+        element.style.zIndex = '999';
+    }
+
+    hideHeader(element) {
+        element.style.display = 'none';
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(-100%)';
+    }
+    showHeader(element) {
+        element.style.display = 'block';
+        setTimeout(() => {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+            element.style.width = '100%';
+        }, 10);
+    }
+
+
 }
 
-new TransparentHeader({
+const x = new TransparentHeader({
     StaticHeaderElement: document.querySelector('.static-nav'),
     stickyHeaderElement: document.querySelector('.sticky-nav')
 })
-
-
-
