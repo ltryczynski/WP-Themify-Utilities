@@ -19,6 +19,15 @@ class FixedFooter {
         mainFooter.style.bottom = '0';
         mainFooter.style.zIndex = '-10';
 
+        if (window.scrollY > document.documentElement.scrollHeight - window.innerHeight - mainFooter.clientHeight) {
+            console.log("footer In view");
+            this.maxHeightReachHandler();
+        }
+        else {
+            console.log("footer not in view");
+            this.getBackFromView();
+        }
+
     }
 
 
@@ -31,28 +40,42 @@ class FixedFooter {
 
         // Reaching footer
         if (status.footerInView !== true && h >= document.documentElement.scrollHeight - window.innerHeight - footerDOM.mainFooter.clientHeight) {
-            status.footerInView = true;
-            footerDOM.mainFooter.style.visibility = 'visible';
+            this.reachingFooterHandler();
         }
 
         // Max document height reach
         if (h >= document.documentElement.scrollHeight - window.innerHeight) {
-            footerDOM.mainFooter.style.position = 'absolute';
-            footerDOM.mainFooter.style.zIndex = '1';
-
-            status.footerScrollMax = true;
+            this.maxHeightReachHandler();
         }
         // Get back from footer view
         if (status.footerScrollMax === true && h < document.documentElement.scrollHeight - window.innerHeight - this.footerDOM.mainFooter.clientHeight) {
-            footerDOM.mainFooter.style.position = 'fixed';
-            footerDOM.mainFooter.style.zIndex = '-100';
-            status.footerScrollMax = false;
-            status.footerInView = false;
-            footerDOM.mainFooter.style.visibility = 'hidden';
+            this.getBackFromView();
         }
 
     }
 
+    // utilities
+    reachingFooterHandler() {
+        const { status, footerDOM } = this;
+        status.footerInView = true;
+        footerDOM.mainFooter.style.visibility = 'visible';
+    }
+
+    maxHeightReachHandler() {
+        const { status, footerDOM } = this;
+        footerDOM.mainFooter.style.position = 'absolute';
+        footerDOM.mainFooter.style.zIndex = '1';
+        status.footerScrollMax = true;
+    }
+
+    getBackFromView() {
+        const { status, footerDOM } = this;
+        footerDOM.mainFooter.style.position = 'fixed';
+        footerDOM.mainFooter.style.zIndex = '-100';
+        status.footerScrollMax = false;
+        status.footerInView = false;
+        footerDOM.mainFooter.style.visibility = 'hidden';
+    }
 
 }
 
