@@ -26,7 +26,7 @@ class FixedFooter {
         window.addEventListener('scroll', (e) => this.scrollHander(e));
     }
     scrollHander(event) {
-        const { footerDOM, footerScrollMax, status } = this;
+        const { footerDOM, status } = this;
         let h = window.scrollY;
 
         // Reaching footer
