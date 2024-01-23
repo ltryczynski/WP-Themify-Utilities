@@ -31,7 +31,6 @@ class FixedFooter {
 
         // Reaching footer
         if (status.footerInView !== true && h >= document.documentElement.scrollHeight - window.innerHeight - footerDOM.mainFooter.clientHeight) {
-            console.log('elo');
             status.footerInView = true;
             footerDOM.mainFooter.style.visibility = 'visible';
         }
