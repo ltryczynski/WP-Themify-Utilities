@@ -19,7 +19,6 @@ class TransparentHeader {
     toggleHeader(navKey) {
         const { nav } = this;
         for (let k in nav) {
-            console.log(`---- nav key: ${k}`);
             if (navKey === k) {
                 this.showHeader(nav[k]);
                 this.activeHeader = k;
@@ -34,11 +33,9 @@ class TransparentHeader {
     checkActiveHeader() {
         const { checkWindowPosition, scrollYChangePos } = this;
         if (checkWindowPosition() > scrollYChangePos) {
-            console.log('sticky nav');
             this.toggleHeader('sticky');
         }
         else {
-            console.log('static nav ');
             this.toggleHeader('static');
         }
     }
@@ -79,7 +76,7 @@ class TransparentHeader {
 
 }
 
-const x = new TransparentHeader({
+const transparentHeader = new TransparentHeader({
     StaticHeaderElement: document.querySelector('.static-nav'),
     stickyHeaderElement: document.querySelector('.sticky-nav')
 })
