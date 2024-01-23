@@ -72,8 +72,6 @@ class TransparentHeader {
             element.style.width = '100%';
         }, 10);
     }
-
-
 }
 
 const transparentHeader = new TransparentHeader({
