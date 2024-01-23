@@ -45,8 +45,12 @@ class FixedFooter {
         if (h >= document.documentElement.scrollHeight - window.innerHeight) {
             this.maxHeightReachHandler();
         }
-        // Get back from footer view
+        // Get back from footer view and reaching max
         if (status.footerScrollMax === true && h < document.documentElement.scrollHeight - window.innerHeight - this.footerDOM.mainFooter.clientHeight) {
+            this.getBackFromView();
+        }
+        // Get back from footer view but not reaching max
+        if (status.footerInView === true && h < document.documentElement.scrollHeight - window.innerHeight - this.footerDOM.mainFooter.clientHeight) {
             this.getBackFromView();
         }
 
