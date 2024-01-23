@@ -20,11 +20,9 @@ class FixedFooter {
         mainFooter.style.zIndex = '-10';
 
         if (window.scrollY > document.documentElement.scrollHeight - window.innerHeight - mainFooter.clientHeight) {
-            console.log("footer In view");
             this.maxHeightReachHandler();
         }
         else {
-            console.log("footer not in view");
             this.getBackFromView();
         }
 
