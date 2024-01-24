@@ -1,8 +1,8 @@
 class TransparentHeader {
-    constructor({ stickyHeaderElement, StaticHeaderElement, scrollYChangePos = 300 }) {
+    constructor({ stickyHeaderElement, staticHeaderElement, scrollYChangePos = 300 }) {
         this.nav = {
             sticky: stickyHeaderElement,
-            static: StaticHeaderElement,
+            static: staticHeaderElement,
         }
         this.scrollYChangePos = scrollYChangePos;
         this.setUpHeaders();
