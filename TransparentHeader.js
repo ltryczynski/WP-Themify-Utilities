@@ -75,6 +75,6 @@ class TransparentHeader {
 }
 
 const transparentHeader = new TransparentHeader({
-    StaticHeaderElement: document.querySelector('.static-nav'),
+    staticHeaderElement: document.querySelector('.static-nav'),
     stickyHeaderElement: document.querySelector('.sticky-nav')
 })
