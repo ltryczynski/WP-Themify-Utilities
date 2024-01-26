@@ -15,7 +15,7 @@ class ScrollToTopArrow {
         const { top, right, bottom, left } = this.position;
         const div = document.createElement('div');
         div.innerHTML = this.arrowSvg;
-        div.style = `width:4rem; height:4rem; background-color:rgba(31,39,62, 1); border-radius:50%; box-shadow:1px 1px 4px 0px rgba(0,0,0,.25); display:flex; justify-content:center; align-items:center; cursor:pointer; position:fixed; top: ${top}; right:${right}; bottom:${bottom}; left: ${left}; visibility:hidden; opacity:0; transform: translateY(1em); transition:.3s ease-out; backdrop-blur(1px); -webkit-backdrop-blur(1px);`;
+        div.style = `width:4rem; height:4rem; background-color:rgba(31,39,62, 1); border-radius:50%; box-shadow:1px 1px 4px 0px rgba(0,0,0,.25); display:flex; justify-content:center; align-items:center; cursor:pointer; position:fixed; top: ${top}; right:${right}; bottom:${bottom}; left: ${left}; visibility:hidden; opacity:0; transform: translateY(1em); transition:.3s ease-out; backdrop-blur(1px); -webkit-backdrop-blur(1px); z-index:50;`;
         this.arrow = div;
         document.body.append(div);
     }
