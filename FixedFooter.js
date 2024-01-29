@@ -8,8 +8,10 @@ class FixedFooter {
             footerInView: false,
         }
 
-        this.setUpFooters();
-        this.scrollEvent();
+        window.addEventListener('load', () => {
+            this.setUpFooters();
+            this.scrollEvent();
+        });
     }
 
     setUpFooters() {
