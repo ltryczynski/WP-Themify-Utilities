@@ -10,17 +10,26 @@ class MegaMenu {
     setUp() {
         const { enableMobile, mobileBreakpoint } = this.mobile;
         if (enableMobile === true || window.innerWidth > mobileBreakpoint) {
-            this.setWidth();
+            window.addEventListener('load', () => {
+                this.setWidth();
+            });
         }
     }
 
     setWidth() {
         const { menuElements, submenuSelector } = this;
         for (let i in menuElements) {
-            menuElements[i].querySelector(submenuSelector).style.width = `${menuElements[i].clientWidth}px`;
+            console.log(menuElements[i]);
+            menuElements[i].querySelector(submenuSelector).style.width = `${this.getWidthByCompareMenuElements()}px`;
         }
     }
 
+    getWidthByCompareMenuElements() {
+        const { menuElements } = this;
+        let h = 0;
+        menuElements.forEach(item => item.clientWidth > h ? h = item.clientWidth : '');
+        return h;
+    }
 }
 
 new MegaMenu({
