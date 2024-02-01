@@ -1,22 +1,41 @@
 class FixedFooter {
-    constructor({ mainFooter, backdropFooter }) {
+    constructor({ mainFooter, enableMobile = false, mobileBreakpoint = '768' }) {
         this.footerDOM = {
-            mainFooter, backdropFooter
+            mainFooter
+        }
+        this.mobileFooter = {
+            enableMobile, mobileBreakpoint
         }
         this.status = {
             footerScrollMax: false,
             footerInView: false,
         }
 
-        window.addEventListener('load', () => {
-            this.setUpFooters();
-            this.scrollEvent();
-        });
+        this.setUp();
+    }
+
+    setUp() {
+        const { enableMobile, mobileBreakpoint } = this.mobileFooter;
+        if (enableMobile === true || window.innerWidth > mobileBreakpoint) {
+            window.addEventListener('load', () => {
+                this.setUpFooters();
+                this.scrollEvent();
+            });
+        }
+    }
+
+    createBackdropFooter() {
+        const { footerDOM } = this;
+        footerDOM.backdropFooter = document.createElement('div');
+        footerDOM.backdropFooter.style = `width:100%; height:${footerDOM.mainFooter.clientHeight}px;`;
+        footerDOM.backdropFooter.id = 'hoelho';
+        footerDOM.mainFooter.parentElement.append(footerDOM.backdropFooter);
+
     }
 
     setUpFooters() {
         const { mainFooter, backdropFooter } = this.footerDOM;
-        backdropFooter.style.height = `${mainFooter.clientHeight}px`;
+        this.createBackdropFooter();
         mainFooter.style.position = 'fixed';
         mainFooter.style.bottom = '0';
         mainFooter.style.zIndex = '-10';
@@ -38,7 +57,7 @@ class FixedFooter {
         const { footerDOM, status } = this;
         let h = window.scrollY;
 
-        // Reaching footer
+        // Reaching footer area
         if (status.footerInView !== true && h >= document.documentElement.scrollHeight - window.innerHeight - footerDOM.mainFooter.clientHeight) {
             this.reachingFooterHandler();
         }
@@ -85,5 +104,4 @@ class FixedFooter {
 
 const fixedFooter = new FixedFooter({
     mainFooter: document.querySelector('.footer-lt__main'),
-    backdropFooter: document.querySelector('.footer-lt__backdrop'),
 })
