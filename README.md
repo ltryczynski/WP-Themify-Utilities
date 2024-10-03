@@ -82,8 +82,6 @@ Create Table of Content for your post/page. It will automatically generate a lis
 
 ### Usage
 
-1. Add the following shortcode to your post/page content where you want the Table of Content to appear.
-
 ```javascript
 const tableContent: new TableContent({
     tableContentContainer: document.querySelector('#table-content'), //mandatory, specify the container for the table of content
