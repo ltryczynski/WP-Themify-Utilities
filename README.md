@@ -1,6 +1,7 @@
 # WP-Themify-Utilities
 
 Utilities functions, class, and html elements for Wordpress Themify theme
+<br><br>
 
 ## EqualHeight
 
@@ -17,6 +18,8 @@ new EqualHeight(
 );
 ```
 
+<br><br>
+
 ## FixedFooter
 
 Create a fixed footer for your page. Script modify behavior of the footer to be fixed at the bottom of the page. When scroll hit bottom of teh page, the footer will be set to absolute.
@@ -30,6 +33,8 @@ const fixedFooter: new FixedFooter({
     mobileBreakpoint: '768' //optional, specify the breakpoint for mobile
 })
 ```
+
+<br><br>
 
 ### MegaMenu
 
@@ -45,6 +50,8 @@ new MegaMenu({
   enableMobil: false, //optional, specify if you want to enable the mega menu on mobile
 });
 ```
+
+<br><br>
 
 ## ScrollToTop
 
@@ -66,6 +73,8 @@ const arrow: new ScrollToTopArrow({
     showArrowHeight: '200' //optional, specify the scroll height to show the arrow
 });
 ```
+
+<br><br>
 
 ## TableContent
 
@@ -89,6 +98,8 @@ const tableContent: new TableContent({
     }
 });
 ```
+
+<br><br>
 
 ## TransparentHeader
 
