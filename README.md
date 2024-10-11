@@ -36,7 +36,7 @@ const fixedFooter: new FixedFooter({
 
 <br><br>
 
-### MegaMenu
+## MegaMenu
 
 MegaMenu for themify builder pro. It will help to style the mega menu for the themify builder pro.
 
@@ -73,6 +73,26 @@ const arrow: new ScrollToTopArrow({
     showArrowHeight: '200' //optional, specify the scroll height to show the arrow
 });
 ```
+
+<br><br>
+
+## SplitText
+
+Use this class to split text within an element into smaller elements, such as individual letters or words. You can specify the type of element to enclose each letter or word, for example, `<span>`.
+
+### Usage
+
+```javascript
+new SplitText(
+  document.querySelector(".text-element"), //mandatory, specify the element containing the text to split
+  {
+    type: "chars", //optional, specify the type of split: "letters" or "words" (default is "letters")
+    containerType: "span", //optional, specify the element to wrap each letter or word (default is "span")
+  }
+);
+```
+
+<br><br>
 
 <br><br>
 
