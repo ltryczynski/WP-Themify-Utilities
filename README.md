@@ -94,8 +94,6 @@ new SplitText(
 
 <br><br>
 
-<br><br>
-
 ## TableContent
 
 Create Table of Content for your post/page. It will automatically generate a list of links to the headings in your post/page content. It will also add scroll effect to the links when clicked.
