@@ -5,7 +5,7 @@ Utilities functions, class, and html elements for Wordpress Themify theme
 
 ## Anchor
 
-Create anchor ad compontent for your page.
+Create anchor ad compontent for your page. It will automatically create anchor element fixed at the bottom of the page. Class contain basic behaviour (scroll event, toggle)
 
 ### Usage
 
@@ -17,6 +17,8 @@ const anchor = new Anchor({
   anchorTemplate: (title, description, href) => {}, //optional, specify the template for the anchor, return string
 }).init();
 ```
+
+<br><br>
 
 ## EqualHeight
 
