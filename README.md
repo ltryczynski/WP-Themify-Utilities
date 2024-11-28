@@ -3,6 +3,21 @@
 Utilities functions, class, and html elements for Wordpress Themify theme
 <br><br>
 
+## Anchor
+
+Create anchor ad compontent for your page.
+
+### Usage
+
+```javascript
+const anchor = new Anchor({
+  title: "anchor title", //mandatory, specify the title of the anchor
+  description: "anchor description", //optional, specify the description of the anchor
+  href: "anchor link", //optional, specify the link for the anchor
+  anchorTemplate: (title, description, href) => {}, //optional, specify the template for the anchor, return string
+}).init();
+```
+
 ## EqualHeight
 
 Use this class to make the height of the elements equal. It will automatically adjust the height of the elements to the height of the tallest element.
@@ -47,7 +62,7 @@ new MegaMenu({
   menuElements: document.querySelectorAll(".main-nav"), //mandatory, specify the menu elements
   submenuSelecto: "ul.sub-menu.tf_scrollbar", //optional, specify the selector for the submenus
   mobileBreakpoin: 786, //optional, specify the breakpoint for mobile
-  enableMobil: false, //optional, specify if you want to enable the mega menu on mobile
+  enableMobile: false, //optional, specify if you want to enable the mega menu on mobile
 });
 ```
 
